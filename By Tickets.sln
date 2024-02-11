@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ABDC5098-49AB-4604-AE53-7FB4061BE225}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Domain", "1-Domain", "{E6D1DAA1-015B-4B94-8D9A-C53A0068BE9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{250B10EE-0611-4D14-8AB1-8C2194C74159}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{C9BC1FFC-58C6-42D5-A7C8-9B08ADDA41A0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Infratuctures", "2-Infratuctures", "{7F772D81-BDD4-428C-A15B-EF39BCD9AF1F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-EndPoint", "3-EndPoint", "{1554CAC6-B2BB-40AA-8DD8-47B5C12B2BD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Domain.Core", "App.Domain.Core\App.Domain.Core.csproj", "{2BC196C5-5A95-436D-9D72-E86BC593B775}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2BC196C5-5A95-436D-9D72-E86BC593B775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BC196C5-5A95-436D-9D72-E86BC593B775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BC196C5-5A95-436D-9D72-E86BC593B775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BC196C5-5A95-436D-9D72-E86BC593B775}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E6D1DAA1-015B-4B94-8D9A-C53A0068BE9C} = {ABDC5098-49AB-4604-AE53-7FB4061BE225}
+		{250B10EE-0611-4D14-8AB1-8C2194C74159} = {E6D1DAA1-015B-4B94-8D9A-C53A0068BE9C}
+		{C9BC1FFC-58C6-42D5-A7C8-9B08ADDA41A0} = {E6D1DAA1-015B-4B94-8D9A-C53A0068BE9C}
+		{7F772D81-BDD4-428C-A15B-EF39BCD9AF1F} = {ABDC5098-49AB-4604-AE53-7FB4061BE225}
+		{1554CAC6-B2BB-40AA-8DD8-47B5C12B2BD6} = {ABDC5098-49AB-4604-AE53-7FB4061BE225}
+		{2BC196C5-5A95-436D-9D72-E86BC593B775} = {250B10EE-0611-4D14-8AB1-8C2194C74159}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9B02ED6F-C662-456B-9167-31A9F07FC274}
+	EndGlobalSection
+EndGlobal
