@@ -6,11 +6,17 @@ namespace App.Infra.SqlServer.Ef.Dbctx;
 
 public class AppDbContext:DbContext
 {
-    private const string ConnectionString = @"Server=DESKTOP-EHGP6HB\SQLEXPRESS;Initial Catalog=ByTicketDb;Integrated Security=True;MultipleActiveResultSets=True";
-    public DbSet<Passenger> passengers { get; set; }
+    private const string ConnectionString = @"Server=DESKTOP-EHGP6HB\SQLEXPRESS;database= ByTicketDb;Trusted_Connection=True;TrustServerCertificate=True;Integrated Security=True;";
+                                            
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(ConnectionString).LogTo(Console.WriteLine);
         base.OnConfiguring(optionsBuilder);
+        optionsBuilder.UseSqlServer(ConnectionString);
     }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+    }
+    public DbSet<Passenger> passengers { get; set; }
 }
