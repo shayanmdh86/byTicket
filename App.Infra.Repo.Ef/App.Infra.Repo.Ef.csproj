@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Passenger\AppService\" />
-    <Folder Include="Passenger\Service\" />
+    <ProjectReference Include="..\App.Infra.SqlServer.Ef\App.Infra.SqlServer.Ef.csproj" />
   </ItemGroup>
 
 </Project>
