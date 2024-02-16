@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Infra.SqlServer.Ef", "A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{BE7FD227-3243-410B-8893-9C8ADCAD9568}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.EndPoint.WebApi", "App.EndPoint.WebApi\App.EndPoint.WebApi.csproj", "{9DB1AF3E-F1DD-474D-9763-FD9BF36ECC2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.EndPoint.WebApi", "App.EndPoint.WebApi\App.EndPoint.WebApi.csproj", "{9DB1AF3E-F1DD-474D-9763-FD9BF36ECC2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Infra.Repo.Ef", "App.Infra.Repo.Ef\App.Infra.Repo.Ef.csproj", "{4340B1B9-03EF-4894-A91B-6D4CD8753301}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{9DB1AF3E-F1DD-474D-9763-FD9BF36ECC2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DB1AF3E-F1DD-474D-9763-FD9BF36ECC2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DB1AF3E-F1DD-474D-9763-FD9BF36ECC2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4340B1B9-03EF-4894-A91B-6D4CD8753301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4340B1B9-03EF-4894-A91B-6D4CD8753301}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4340B1B9-03EF-4894-A91B-6D4CD8753301}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4340B1B9-03EF-4894-A91B-6D4CD8753301}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +64,7 @@ Global
 		{8CB1EF93-7A18-4873-9A0F-D0467A7A2B1B} = {3833CE07-DEEA-4D98-AB1B-629CF6B3399A}
 		{BE7FD227-3243-410B-8893-9C8ADCAD9568} = {7F772D81-BDD4-428C-A15B-EF39BCD9AF1F}
 		{9DB1AF3E-F1DD-474D-9763-FD9BF36ECC2C} = {1554CAC6-B2BB-40AA-8DD8-47B5C12B2BD6}
+		{4340B1B9-03EF-4894-A91B-6D4CD8753301} = {BE7FD227-3243-410B-8893-9C8ADCAD9568}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B02ED6F-C662-456B-9167-31A9F07FC274}

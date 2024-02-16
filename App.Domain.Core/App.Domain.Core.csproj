@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Passenger\AppService\" />
+    <Folder Include="Passenger\Service\" />
+  </ItemGroup>
+
 </Project>

@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace App.Domain.Core.Passenger.DTOs
 {
-    internal class PassengerDto
+    public class PassengerDto
     {
+        public int Id { get; set; }
+        public string FullName { get; set; }
+        public string PhoneNumber { get; set; }
+        public int NationalCode { get; set; }
     }
 }
