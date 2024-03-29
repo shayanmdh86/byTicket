@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Domain.Core.Passenger.DTOs
+namespace App.Domain.Core.Passenger.DTOs;
+
+public class PassengerDto 
 {
-    public class PassengerDto
-    {
-        public int Id { get; set; }
-        public string FullName { get; set; }
-        public string PhoneNumber { get; set; }
-        public int NationalCode { get; set; }
-    }
+    public int? Id { get; set; }
+    public string? FullName { get; set; }
+    public string? PhoneNumber { get; set; }
+    public int? NationalCode { get; set; }
 }

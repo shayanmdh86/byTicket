@@ -12,7 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\App.Domain.AppService\App.Domain.AppService.csproj" />
     <ProjectReference Include="..\App.Domain.Core\App.Domain.Core.csproj" />
+    <ProjectReference Include="..\App.Domain.Service\App.Domain.Service.csproj" />
+    <ProjectReference Include="..\App.Infra.Repo.Ef\App.Infra.Repo.Ef.csproj" />
     <ProjectReference Include="..\App.Infra.SqlServer.Ef\App.Infra.SqlServer.Ef.csproj" />
   </ItemGroup>
 

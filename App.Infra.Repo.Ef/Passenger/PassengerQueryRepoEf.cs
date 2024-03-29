@@ -2,15 +2,10 @@
 using App.Domain.Core.Passenger.DTOs;
 using App.Infra.SqlServer.Ef.Dbctx;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace App.Infra.Repo.Ef.Passenger
 {
-    public class PassengerQueryRepoEf : IPassengerQueryRepo
+    public class PassengerQueryRepoEf : IPassengerQueryRepoEf
     {
         private readonly AppDbContext _appDbContext;
 
@@ -22,14 +17,14 @@ namespace App.Infra.Repo.Ef.Passenger
         public async Task<List<PassengerDto>?> SelectPassengers()
         {
             return await _appDbContext.passengers.AsNoTracking().Select(
-                x=> new PassengerDto
+                x => new PassengerDto
                 {
-                    Id=x.Id,
-                    FullName=x.FullName,
-                    PhoneNumber=x.PhoneNumber,
-                    NationalCode=x.NationalCode,
+                    Id = x.Id,
+                    FullName = x.FullName,
+                    PhoneNumber = x.PhoneNumber,
+                    NationalCode = x.NationalCode,
                 }).ToListAsync();
-         
+
         }
     }
 }

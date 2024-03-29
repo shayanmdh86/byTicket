@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Domain.Core.Passenger.Data
+namespace App.Domain.Core.Passenger.Service
 {
-    public interface IPassengerQueryRepoEf
+    public interface IPassengerService
     {
-        Task<List<PassengerDto>?> SelectPassengers();
+        Task<List<PassengerDto>> GetPassengers();
     }
 }
