@@ -16,10 +16,10 @@ namespace App.Infra.Repo.Ef.Passenger
 
         public async Task<List<PassengerDto>?> SelectPassengers()
         {
-            return await _appDbContext.passengers.AsNoTracking().Select(
+            return await _appDbContext.Passengers.AsNoTracking().Select(
                 x => new PassengerDto
                 {
-                    Id = x.Id,
+                    Id = x.PassengerId,
                     FullName = x.FullName,
                     PhoneNumber = x.PhoneNumber,
                     NationalCode = x.NationalCode,
