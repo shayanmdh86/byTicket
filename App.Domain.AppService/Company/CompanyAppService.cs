@@ -17,7 +17,7 @@ namespace App.Domain.AppService.Company
         {
             Core.Company.Entities.Company Company = new Core.Company.Entities.Company
             {
-                CompanyId = 1,
+               
                 CompanyName = input.CompanyName,
                 PhoneNumber = input.PhoneNumber,
             };
