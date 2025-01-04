@@ -1,5 +1,7 @@
 ﻿using App.Domain.Core.Company.AppService;
+using App.Domain.Core.Company.Data;
 using App.Domain.Core.Company.DTOs;
+using App.Domain.Core.Company.Entities;
 using App.Domain.Core.Company.Service;
 using App.Domain.Service.Company;
 using Microsoft.AspNetCore.Http;
@@ -13,12 +15,14 @@ namespace App.EndPoint.WebApi.Controllers
     public class CompanyController : ControllerBase
     {
         private readonly ICompanyAppService _companyAppService;
-        //private readonly ICompanyService _companyService;
+        private readonly ICompanyQureyRepo _companyQureyRepo;
 
-        public CompanyController(ICompanyAppService companyAppService)
+        
+
+        public CompanyController(ICompanyAppService companyAppService,ICompanyQureyRepo companyQureyRepo)
         {
             _companyAppService = companyAppService;
-            //_companyService = companyService;
+            _companyQureyRepo = companyQureyRepo;
         }
 
         [HttpPost]
@@ -33,9 +37,18 @@ namespace App.EndPoint.WebApi.Controllers
                 return BadRequest("Invalid Phone Number Is Format.");
             }
 
-           await _companyAppService.CreateCompany(companyInputDto);
-            return Ok(companyInputDto);
+            var CreatedCom=  await _companyAppService.CreateCompany(companyInputDto);
+            return Ok(new { Message = "Company created successfully!",
+                Com = CreatedCom.CompanyId
+            });
+        }
+
+        [HttpGet]
+        public async Task<List<CompanyViewDTOs>> GetCompanies()
+        {
+           return await _companyQureyRepo.GetAllCompany();
 
         }
     }
 }
+
