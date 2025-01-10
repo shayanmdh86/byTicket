@@ -15,14 +15,12 @@ namespace App.EndPoint.WebApi.Controllers
     public class CompanyController : ControllerBase
     {
         private readonly ICompanyAppService _companyAppService;
-        private readonly ICompanyQureyRepo _companyQureyRepo;
 
         
 
-        public CompanyController(ICompanyAppService companyAppService,ICompanyQureyRepo companyQureyRepo)
+        public CompanyController(ICompanyAppService companyAppService)
         {
             _companyAppService = companyAppService;
-            _companyQureyRepo = companyQureyRepo;
         }
 
         [HttpPost]
@@ -44,10 +42,10 @@ namespace App.EndPoint.WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<List<CompanyViewDTOs>> GetCompanies()
+        public async Task<List<CompanyViewDTOs>> ShowAllCompany()
         {
-           return await _companyQureyRepo.GetAllCompany();
-
+            return await _companyAppService.CompanyShowList();
+          
         }
     }
 }

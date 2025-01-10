@@ -1,5 +1,6 @@
 ﻿using App.Domain.Core.Company.Data;
 using App.Domain.Core.Company.DTOs;
+using App.Domain.Core.Company.Entities;
 using App.Domain.Core.Company.Service;
 using App.Infra.Repo.Ef.Company;
 using System;
@@ -26,13 +27,7 @@ namespace App.Domain.Service.Company
             return input;
         }
 
-        private static readonly Dictionary<string, string> CityCodes = new Dictionary<string, string> { { "021", "Tehran" },
-                { "031", "Isfahan" },
-                { "071", "Shiraz" },
-                { "051", "Mashhad" },
-                { "041", "Tabriz" },
-                { "035", "Yazd" }
-        };
+        
 
 
         private static readonly string pattern = @"^0\d{2,3}-?\d{7,8}$";
@@ -40,6 +35,11 @@ namespace App.Domain.Service.Company
         public static bool IsValidPhoneNumber(string phoneNumber)
         {
             return Regex.IsMatch(phoneNumber, pattern);
+        }
+
+        public async Task<List<CompanyViewDTOs>> GetAllCompany()
+        {
+            return await _companyQueryRepo.GetAllCompany();
         }
     }
 

@@ -1,5 +1,6 @@
 ﻿using App.Domain.Core.Company.AppService;
 using App.Domain.Core.Company.DTOs;
+using App.Domain.Core.Company.Entities;
 using App.Domain.Core.Company.Service;
 using App.Domain.Service.Company;
 
@@ -11,6 +12,11 @@ namespace App.Domain.AppService.Company
         public CompanyAppService(ICompanyService companyService)
         {
             _companyService = companyService;
+        }
+
+        public async Task<List<CompanyViewDTOs>> CompanyShowList()
+        {
+            return await _companyService.GetAllCompany();
         }
 
         public async Task<Core.Company.Entities.Company> CreateCompany(CompanyInputDto input)

@@ -1,4 +1,5 @@
 ﻿using App.Domain.Core.Company.DTOs;
+using App.Domain.Core.Company.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace App.Domain.Core.Company.AppService
     public interface ICompanyAppService
     {
         Task<Core.Company.Entities.Company> CreateCompany(CompanyInputDto input);
+        Task<List<CompanyViewDTOs>> CompanyShowList();
     }
 }
