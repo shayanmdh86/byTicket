@@ -6,5 +6,6 @@ namespace App.Domain.Core.Company.Data
     {
         Task InsertCompany(Company.Entities.Company company);
         Task<List<CompanyViewDTOs>> GetAllCompany();
+        Task<bool> CompanyDelete(int id);
     }
 }

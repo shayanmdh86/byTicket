@@ -16,8 +16,6 @@ namespace App.EndPoint.WebApi.Controllers
     {
         private readonly ICompanyAppService _companyAppService;
 
-        
-
         public CompanyController(ICompanyAppService companyAppService)
         {
             _companyAppService = companyAppService;
@@ -39,6 +37,12 @@ namespace App.EndPoint.WebApi.Controllers
             return Ok(new { Message = "Company created successfully!",
                 Com = CreatedCom.CompanyId
             });
+        }
+
+        [HttpDelete]
+        public async Task<bool> CompanyDelete([FromQuery] int id)
+        {
+            return await _companyAppService.DeleteCompany(id); 
         }
 
         [HttpGet]

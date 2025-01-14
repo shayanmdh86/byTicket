@@ -31,5 +31,11 @@ namespace App.Domain.AppService.Company
             return Company;
 
         }
+
+        public async Task<bool> DeleteCompany(int id)
+        {
+           return await _companyService.DeleteCompany(id);
+
+        }
     }
 }

@@ -1,13 +1,7 @@
 ﻿using App.Domain.Core.Company.Data;
-using App.Domain.Core.Company.DTOs;
 using App.Domain.Core.Company.Entities;
 using App.Infra.SqlServer.Ef.Dbctx;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace App.Infra.Repo.Ef.Company
 {
@@ -20,13 +14,27 @@ namespace App.Infra.Repo.Ef.Company
             _appDb = appDb;
         }
 
+        public async Task<bool> CompanyDelete(int id)
+        {
+            var Company = _appDb.Companies.FirstOrDefault(x => x.CompanyId == id);
+            if (Company != null)
+            {
+                _appDb.Companies.Remove(Company);
+                await _appDb.SaveChangesAsync();
+                return true;
+            }
+            return false;
+            
+        }
+
+
         public async Task<List<CompanyViewDTOs>> GetAllCompany()
         {
-            return await _appDb.Companies.AsNoTracking().Select(x=>new CompanyViewDTOs
+            return await _appDb.Companies.AsNoTracking().Select(x => new CompanyViewDTOs
             {
                 CompanyName = x.CompanyName,
                 PhoneNumber = x.PhoneNumber,
-                 Travels = x.Travels.ToList(),
+                Travels = x.Travels.ToList(),
             }).ToListAsync();
         }
 
