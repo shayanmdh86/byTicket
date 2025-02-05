@@ -24,7 +24,7 @@ namespace App.Infra.Repo.Ef.Company
                 return true;
             }
             return false;
-            
+
         }
 
 
@@ -38,12 +38,31 @@ namespace App.Infra.Repo.Ef.Company
             }).ToListAsync();
         }
 
+        public async Task<Domain.Core.Company.Entities.Company> GetCompanyById(int id)
+        {
+            return await _appDb.Companies.AsNoTracking().FirstOrDefaultAsync(x => x.CompanyId == id);
+
+        }
+
         public async Task InsertCompany(Domain.Core.Company.Entities.Company company)
         {
             _appDb.Add(company);
             await _appDb.SaveChangesAsync();
         }
 
-
+        public async Task<Domain.Core.Company.Entities.Company> UpdateCom(int Id,Domain.Core.Company.DTOs.CompanyUpdateDto UpdateCompany)
+        {
+            var Entity = await GetCompanyById(Id);
+            if (Entity != null)
+            {
+                Entity.CompanyId = Entity.CompanyId;
+                Entity.CompanyName = UpdateCompany.CompanyName;
+                Entity.PhoneNumber = UpdateCompany.Phonenumber;
+                Entity.TravelId=Entity.TravelId;
+                Entity.Travels=Entity.Travels.ToList();
+                
+            }
+            throw new NotImplementedException();
+        }
     }
 }

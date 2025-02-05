@@ -14,6 +14,6 @@ namespace App.Domain.Core.Company.Service
         Task<Company.Entities.Company> CreateCompany(Core.Company.Entities.Company input);
         Task<List<CompanyViewDTOs>> GetAllCompany();
         Task<bool> DeleteCompany(int id);
-
+        Task<UpdateCompanyResponseDto> UpdateCompany(int id,CompanyUpdateDto updateDto);
     }
 }

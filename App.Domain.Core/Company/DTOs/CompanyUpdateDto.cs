@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace App.Domain.Core.Company.DTOs
 {
-    public class Company
+    public class CompanyUpdateDto
     {
-        //public int CompanyId { get; set; }
         public string CompanyName { get; set; }
-        public string PhoneNumber { get; set; }
+        public string  Phonenumber { get; set; }
     }
 }

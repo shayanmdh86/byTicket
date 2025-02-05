@@ -19,7 +19,7 @@ namespace App.Domain.AppService.Company
             return await _companyService.GetAllCompany();
         }
 
-        public async Task<Core.Company.Entities.Company> CreateCompany(CompanyInputDto input)
+        public async Task<Core.Company.Entities.Company> CreateCompany(Core.Company.DTOs.Company input)
         {
             Core.Company.Entities.Company Company = new Core.Company.Entities.Company
             {
@@ -36,6 +36,16 @@ namespace App.Domain.AppService.Company
         {
            return await _companyService.DeleteCompany(id);
 
+        }
+
+        
+      
+
+        public Task<UpdateCompanyResponseDto> UpdateCompany(int id, CompanyUpdateDto updateDto)
+        {
+
+            _companyService.UpdateCompany(id, updateDto);
+            throw new NotImplementedException();
         }
     }
 }

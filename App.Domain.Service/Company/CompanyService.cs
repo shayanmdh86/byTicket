@@ -2,14 +2,7 @@
 using App.Domain.Core.Company.DTOs;
 using App.Domain.Core.Company.Entities;
 using App.Domain.Core.Company.Service;
-using App.Infra.Repo.Ef.Company;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace App.Domain.Service.Company
 {
@@ -27,7 +20,7 @@ namespace App.Domain.Service.Company
             return input;
         }
 
-        
+
 
 
         private static readonly string pattern = @"^0\d{2,3}-?\d{7,8}$";
@@ -47,10 +40,47 @@ namespace App.Domain.Service.Company
             return await _companyQueryRepo.CompanyDelete(id);
 
         }
+
+        public async Task<UpdateCompanyResponseDto> UpdateCompany(int id, CompanyUpdateDto updateDto)
+        {
+            var Entity = await _companyQueryRepo.UpdateCom(id, updateDto);
+            if (Entity != null)
+            {
+                Core.Company.Entities.Company company = new Core.Company.Entities.Company
+                {
+                    CompanyId = id,
+                    CompanyName = updateDto.CompanyName,
+                    PhoneNumber = updateDto.Phonenumber,
+
+                };
+
+
+
+
+                UpdateCompanyResponseDto UpdateMassage = new UpdateCompanyResponseDto
+                {
+
+                    IsSuccess = true,
+                    Message = "Is Success",
+                };
+                return UpdateMassage;
+
+            }
+            else
+            {
+                UpdateCompanyResponseDto UpdateMassage = new UpdateCompanyResponseDto
+                {
+
+                    IsSuccess = false,
+                    Message = "Unsuccessful",
+                };
+                return UpdateMassage;
+            }
+        }
+
+
+
+
+
     }
-
-
-
-
-    
 }
