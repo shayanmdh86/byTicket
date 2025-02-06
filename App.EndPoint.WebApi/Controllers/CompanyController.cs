@@ -24,5 +24,34 @@ namespace App.EndPoint.WebApi.Controllers
           return Ok(companyInputDto);
 
         }
+
+        
+        //public async Task<ActionResult<UpdateCompanyResponseDto>> UpdateCompany(int id, CompanyUpdateDto updateDto)
+        //{
+        //    if (id <= 0 || updateDto == null)
+        //    {
+        //        return BadRequest("Invalid Parameters.");
+
+        //    }
+        //    try
+        //    {
+        //        var Respons = await _companyQureyRepo.UpdateCom(id,updateDto);
+
+        //        if (Respons == null)
+
+        //            return BadRequest(Respons);
+
+
+        //        return Ok(Respons);
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        return StatusCode(500, "خطا در بروزرسانی شرکت!!!");
+        //    }
+
+        //}
     }
 }
+
