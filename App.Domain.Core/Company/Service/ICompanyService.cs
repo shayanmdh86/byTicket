@@ -12,5 +12,7 @@ namespace App.Domain.Core.Company.Service
     public interface ICompanyService
     {
         Task<Company.Entities.Company> CreateCompany(Core.Company.Entities.Company input);
+        Task<List<CompanyViewDTOs>> CompanyViews();
+        Task<bool> DeleteCompany(int id);  
     }
 }

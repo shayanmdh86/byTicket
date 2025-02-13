@@ -1,13 +1,4 @@
-﻿using App.Domain.Core.Bus.Entites;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace App.Domain.Core.Travel.Entities;
+﻿namespace App.Domain.Core.Travel.Entities;
 
 public class Travel
 {
@@ -24,3 +15,4 @@ public class Travel
     // public ICollection<string>? CitiesOnTheway { get; set; }
 
 }
+

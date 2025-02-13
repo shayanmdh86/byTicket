@@ -1,14 +1,6 @@
 ﻿using App.Domain.Core.Company.Data;
-using App.Domain.Core.Company.DTOs;
 using App.Domain.Core.Company.Service;
-using App.Infra.Repo.Ef.Company;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace App.Domain.Service.Company
 {
@@ -41,10 +33,21 @@ namespace App.Domain.Service.Company
         {
             return Regex.IsMatch(phoneNumber, pattern);
         }
+
+        public async Task<bool> DeleteCompany(int id)
+        {
+            return await _companyQueryRepo.DeleteCompany(id);
+        }
+
+        public async Task<List<CompanyViewDTOs>> CompanyViews()
+        {
+            return await _companyQueryRepo.GetAllCompany();
+
+        }
     }
 
 
 
 
-    
+
 }
