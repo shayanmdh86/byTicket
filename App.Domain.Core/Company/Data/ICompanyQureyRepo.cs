@@ -9,7 +9,7 @@ namespace App.Domain.Core.Company.Data
         Task InsertCompany(Company.Entities.Company company);
         Task<List<CompanyViewDTOs>> GetAllCompany();
         Task<bool> CompanyDelete(int id);
-        Task<Company.Entities.Company> UpdateCom(int Id ,Company.DTOs.CompanyUpdateDto UpdateCompany);
+        Task<bool> UpdateCom(int Id ,Company.DTOs.CompanyUpdateDto UpdateCompany);
         Task<Company.Entities.Company> GetCompanyById(int id);
     }
 }

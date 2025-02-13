@@ -8,9 +8,9 @@ namespace App.Domain.Core.Company.DTOs
 {
     public class UpdateCompanyResponseDto
     {
-        public bool IsSuccess {  get; set; }
-        public string Message { get; set; }
-        public Company? Company {  get; set; }
+
+        public bool IsSuccess { get; set; }
+        public string Massage {  get; set; }
 
     }
 }

@@ -1,7 +1,6 @@
 ﻿using App.Domain.Core.Company.AppService;
-using App.Domain.Core.Company.Data;
 using App.Domain.Core.Company.DTOs;
-using App.Domain.Core.Company.Entities;
+
 using App.Domain.Service.Company;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,17 +11,18 @@ namespace App.EndPoint.WebApi.Controllers
     public class CompanyController : ControllerBase
     {
         private readonly ICompanyAppService _companyAppService;
-        private readonly ICompanyQureyRepo _companyQureyRepo;
 
-        public CompanyController(ICompanyAppService companyAppService,ICompanyQureyRepo companyQureyRepo)
+        public CompanyController(ICompanyAppService companyAppService)
+
         {
             _companyAppService = companyAppService;
-            _companyQureyRepo = companyQureyRepo;
         }
 
+
+
         [HttpPost]
-        public async Task<IActionResult> PostCompany(Domain.Core.Company.DTOs.Company companyInputDto)
-        //اینو یبار دیباگ کن
+        public async Task<IActionResult> PostCompany(CompanyInputDto companyInputDto)
+
         {
             if (!ModelState.IsValid)
             {
@@ -42,17 +42,11 @@ namespace App.EndPoint.WebApi.Controllers
         }
 
         [HttpDelete]
-        public async Task<bool> CompanyDelete([FromQuery] int id)
+        public async Task<bool> CompanyDelete(int id)
         {
             return await _companyAppService.DeleteCompany(id);
         }
 
-        [HttpGet]
-        public async Task<List<CompanyViewDTOs>> ShowAllCompany()
-        {
-            return await _companyAppService.CompanyShowList();
-
-        }
 
         [HttpPut]
         public async Task<ActionResult<UpdateCompanyResponseDto>> UpdateCompany(int id, CompanyUpdateDto updateDto)
@@ -64,7 +58,7 @@ namespace App.EndPoint.WebApi.Controllers
             }
             try
             {
-                var Respons = await _companyQureyRepo.UpdateCom(id,updateDto);
+                var Respons = await _companyAppService.(id, updateDto);
 
                 if (Respons == null)
 
@@ -80,6 +74,54 @@ namespace App.EndPoint.WebApi.Controllers
                 return StatusCode(500, "خطا در بروزرسانی شرکت!!!");
             }
 
+            [HttpDelete]
+             async Task<IActionResult> DeleteCompany(int id)
+            {
+                if (id != 0 && ModelState.IsValid)
+                {
+                    await _companyAppService.DeleteCompany(id);
+                    return Ok();
+                }
+                return BadRequest();
+
+
+            }
+
+            [HttpGet]
+             async Task<IActionResult> GetAllCompany()
+            {
+                var entity = await _companyAppService.GetAllCompany();
+                return Ok(entity);
+
+            }
+
+
+            //public async Task<ActionResult<UpdateCompanyResponseDto>> UpdateCompany(int id, CompanyUpdateDto updateDto)
+            //{
+            //    if (id <= 0 || updateDto == null)
+            //    {
+            //        return BadRequest("Invalid Parameters.");
+
+            //    }
+            //    try
+            //    {
+            //        var Respons = await _companyQureyRepo.UpdateCom(id,updateDto);
+
+            //        if (Respons == null)
+
+            //            return BadRequest(Respons);
+
+
+            //        return Ok(Respons);
+
+            //    }
+            //    catch (Exception ex)
+            //    {
+
+            //        return StatusCode(500, "خطا در بروزرسانی شرکت!!!");
+            //    }
+
+            //}
         }
     }
 }

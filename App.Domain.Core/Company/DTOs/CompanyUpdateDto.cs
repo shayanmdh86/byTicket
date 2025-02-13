@@ -9,6 +9,6 @@ namespace App.Domain.Core.Company.DTOs
     public class CompanyUpdateDto
     {
         public string CompanyName { get; set; }
-        public string  Phonenumber { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

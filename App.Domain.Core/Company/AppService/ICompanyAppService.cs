@@ -10,9 +10,12 @@ namespace App.Domain.Core.Company.AppService
 {
     public interface ICompanyAppService
     {
-        Task<Core.Company.Entities.Company> CreateCompany(DTOs.Company input);
-        Task<List<CompanyViewDTOs>> CompanyShowList();
+        Task<Core.Company.Entities.Company> CreateCompany(CompanyInputDto input);
         Task<bool> DeleteCompany(int id);
-        Task<UpdateCompanyResponseDto> UpdateCompany(int id,CompanyUpdateDto updateDto);
+        Task<bool> UpdateCompany(int id,CompanyUpdateDto input);
+        Task<CompanyViewDTOs> GetAllCompany();
+
+
+
     }
 }

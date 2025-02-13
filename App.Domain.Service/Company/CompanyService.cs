@@ -29,7 +29,6 @@ namespace App.Domain.Service.Company
         {
             return Regex.IsMatch(phoneNumber, pattern);
         }
-
         public async Task<List<CompanyViewDTOs>> GetAllCompany()
         {
             return await _companyQueryRepo.GetAllCompany();
@@ -41,46 +40,20 @@ namespace App.Domain.Service.Company
 
         }
 
-        public async Task<UpdateCompanyResponseDto> UpdateCompany(int id, CompanyUpdateDto updateDto)
+        public async Task<bool> UpdateCompany(int id, CompanyUpdateDto updateDto)
         {
-            var Entity = await _companyQueryRepo.UpdateCom(id, updateDto);
-            if (Entity != null)
-            {
-                Core.Company.Entities.Company company = new Core.Company.Entities.Company
-                {
-                    CompanyId = id,
-                    CompanyName = updateDto.CompanyName,
-                    PhoneNumber = updateDto.Phonenumber,
-
-                };
-
-
-
-
-                UpdateCompanyResponseDto UpdateMassage = new UpdateCompanyResponseDto
-                {
-
-                    IsSuccess = true,
-                    Message = "Is Success",
-                };
-                return UpdateMassage;
-
-            }
-            else
-            {
-                UpdateCompanyResponseDto UpdateMassage = new UpdateCompanyResponseDto
-                {
-
-                    IsSuccess = false,
-                    Message = "Unsuccessful",
-                };
-                return UpdateMassage;
-            }
+            return await _companyQueryRepo.UpdateCom(id, updateDto);
         }
+     
+        public async Task<List<CompanyViewDTOs>> CompanyViews()
+        {
+            return await _companyQueryRepo.GetAllCompany();
 
-
-
-
-
+        }
     }
+
+
+
+
+
 }

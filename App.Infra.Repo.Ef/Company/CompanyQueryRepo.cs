@@ -1,4 +1,5 @@
 ﻿using App.Domain.Core.Company.Data;
+using App.Domain.Core.Company.DTOs;
 using App.Domain.Core.Company.Entities;
 using App.Infra.SqlServer.Ef.Dbctx;
 using Microsoft.EntityFrameworkCore;
@@ -14,19 +15,10 @@ namespace App.Infra.Repo.Ef.Company
             _appDb = appDb;
         }
 
-        public async Task<bool> CompanyDelete(int id)
+        public Task<bool> CompanyDelete(int id)
         {
-            var Company = _appDb.Companies.FirstOrDefault(x => x.CompanyId == id);
-            if (Company != null)
-            {
-                _appDb.Companies.Remove(Company);
-                await _appDb.SaveChangesAsync();
-                return true;
-            }
-            return false;
-
+            throw new NotImplementedException();
         }
-
 
         public async Task<List<CompanyViewDTOs>> GetAllCompany()
         {
@@ -50,19 +42,25 @@ namespace App.Infra.Repo.Ef.Company
             await _appDb.SaveChangesAsync();
         }
 
-        public async Task<Domain.Core.Company.Entities.Company> UpdateCom(int Id,Domain.Core.Company.DTOs.CompanyUpdateDto UpdateCompany)
+        public async Task<bool> UpdateCom(int Id, CompanyUpdateDto UpdateCompany)
         {
-            var Entity = await GetCompanyById(Id);
-            if (Entity != null)
+            var entity = await GetCompanyById(Id);
+            if (entity != null)
             {
-                Entity.CompanyId = Entity.CompanyId;
-                Entity.CompanyName = UpdateCompany.CompanyName;
-                Entity.PhoneNumber = UpdateCompany.Phonenumber;
-                Entity.TravelId=Entity.TravelId;
-                Entity.Travels=Entity.Travels.ToList();
-                
+               
+
+                entity.CompanyName = UpdateCompany.CompanyName;
+                entity.PhoneNumber = UpdateCompany.PhoneNumber;
+
+                await _appDb.SaveChangesAsync();
+
+                return true;
             }
-            throw new NotImplementedException();
+            else
+            {
+                return false;
+            }
         }
+
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace App.Domain.Core.Company.DTOs
 {
-    public class Company
+    public class CompanyInputDto
+
     {
         //public int CompanyId { get; set; }
         public string CompanyName { get; set; }
