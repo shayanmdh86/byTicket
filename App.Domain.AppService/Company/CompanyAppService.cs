@@ -1,6 +1,5 @@
 ﻿using App.Domain.Core.Company.AppService;
 using App.Domain.Core.Company.DTOs;
-using App.Domain.Core.Company.Entities;
 using App.Domain.Core.Company.Service;
 
 namespace App.Domain.AppService.Company
@@ -18,25 +17,25 @@ namespace App.Domain.AppService.Company
         //    return await _companyService.GetAllCompany();
         //}
 
-      
+
 
         public async Task<bool> DeleteCompany(int id)
         {
-           return await _companyService.DeleteCompany(id);
+            return await _companyService.DeleteCompany(id);
 
         }
 
-        
-      
 
-        public Task<UpdateCompanyResponseDto> UpdateCompany(int id, CompanyUpdateDto updateDto)
+
+
+        public async Task<bool> UpdateCompany(int id, CompanyUpdateDto updateDto)
         {
 
-            _companyService.UpdateCompany(id, updateDto);
-            throw new NotImplementedException();
+            return await _companyService.UpdateCompany(id, updateDto);
+          
         }
 
-    
+
 
         public async Task<List<CompanyViewDTOs>> GetCompanyView(int id)
         {
@@ -51,13 +50,13 @@ namespace App.Domain.AppService.Company
                 CompanyName = input.CompanyName,
                 PhoneNumber = input.PhoneNumber,
             };
-           await _companyService.CreateCompany(Company);
+            await _companyService.CreateCompany(Company);
             return Company;
         }
 
-        Task<bool> ICompanyAppService.UpdateCompany(int id, CompanyUpdateDto input)
+        public async Task<List<CompanyViewDTOs>> GetAllCompany()
         {
-            throw new NotImplementedException();
+            return await _companyService.CompanyViews();
         }
     }
 }

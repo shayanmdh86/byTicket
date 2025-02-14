@@ -12,8 +12,8 @@ namespace App.Domain.Core.Company.Service
     public interface ICompanyService
     {
         Task<Company.Entities.Company> CreateCompany(Core.Company.Entities.Company input);
-        Task<bool> UpdateCompany(int id,CompanyUpdateDto updateDto);
+        Task<bool> UpdateCompany(int id, CompanyUpdateDto updateDto);
         Task<List<CompanyViewDTOs>> CompanyViews();
-        Task<bool> DeleteCompany(int id);  
+        Task<bool> DeleteCompany(int id);
     }
 }

@@ -58,7 +58,7 @@ namespace App.EndPoint.WebApi.Controllers
             }
             try
             {
-                var Respons = await _companyAppService.(id, updateDto);
+                var Respons = await _companyAppService.UpdateCompany(id, updateDto);
 
                 if (Respons == null)
 
@@ -74,54 +74,25 @@ namespace App.EndPoint.WebApi.Controllers
                 return StatusCode(500, "خطا در بروزرسانی شرکت!!!");
             }
 
-            [HttpDelete]
-             async Task<IActionResult> DeleteCompany(int id)
-            {
-                if (id != 0 && ModelState.IsValid)
-                {
-                    await _companyAppService.DeleteCompany(id);
-                    return Ok();
-                }
-                return BadRequest();
-
-
-            }
-
-            [HttpGet]
-             async Task<IActionResult> GetAllCompany()
-            {
-                var entity = await _companyAppService.GetAllCompany();
-                return Ok(entity);
-
-            }
-
-
-            //public async Task<ActionResult<UpdateCompanyResponseDto>> UpdateCompany(int id, CompanyUpdateDto updateDto)
+            //[HttpDelete]
+            // async Task<IActionResult> DeleteCompany(int id)
             //{
-            //    if (id <= 0 || updateDto == null)
+            //    if (id != 0 && ModelState.IsValid)
             //    {
-            //        return BadRequest("Invalid Parameters.");
-
+            //        await _companyAppService.DeleteCompany(id);
+            //        return Ok();
             //    }
-            //    try
-            //    {
-            //        var Respons = await _companyQureyRepo.UpdateCom(id,updateDto);
-
-            //        if (Respons == null)
-
-            //            return BadRequest(Respons);
+            //    return BadRequest();
 
 
-            //        return Ok(Respons);
+     
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAllCompany()
+        {
+            var entity = await _companyAppService.GetAllCompany();
+            return Ok(entity);
 
-            //    }
-            //    catch (Exception ex)
-            //    {
-
-            //        return StatusCode(500, "خطا در بروزرسانی شرکت!!!");
-            //    }
-
-            //}
         }
     }
 }

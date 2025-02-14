@@ -13,7 +13,7 @@ namespace App.Domain.Core.Company.AppService
         Task<Core.Company.Entities.Company> CreateCompany(CompanyInputDto input);
         Task<bool> DeleteCompany(int id);
         Task<bool> UpdateCompany(int id,CompanyUpdateDto input);
-        Task<CompanyViewDTOs> GetAllCompany();
+        Task<List<CompanyViewDTOs>> GetAllCompany();
 
 
 
