@@ -32,7 +32,7 @@ namespace App.Infra.Repo.Ef.Company
 
         public async Task<Domain.Core.Company.Entities.Company> GetCompanyById(int id)
         {
-            return await _appDb.Companies.AsNoTracking().FirstOrDefaultAsync(x => x.CompanyId == id);
+            return await _appDb.Companies.FirstOrDefaultAsync(x => x.CompanyId == id);
 
         }
 
@@ -47,12 +47,14 @@ namespace App.Infra.Repo.Ef.Company
             var entity = await GetCompanyById(Id);
             if (entity != null)
             {
-               
-
+                entity.CompanyId = Id;
                 entity.CompanyName = UpdateCompany.CompanyName;
                 entity.PhoneNumber = UpdateCompany.PhoneNumber;
-
+                entity.TravelId=entity.TravelId;
+                entity.Travels=entity.Travels;
+                
                 await _appDb.SaveChangesAsync();
+                
 
                 return true;
             }

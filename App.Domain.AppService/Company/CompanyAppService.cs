@@ -12,21 +12,11 @@ namespace App.Domain.AppService.Company
             _companyService = companyService;
         }
 
-        //public async Task<List<CompanyViewDTOs>> CompanyShowList()
-        //{
-        //    return await _companyService.GetAllCompany();
-        //}
-
-
-
         public async Task<bool> DeleteCompany(int id)
         {
             return await _companyService.DeleteCompany(id);
 
         }
-
-
-
 
         public async Task<bool> UpdateCompany(int id, CompanyUpdateDto updateDto)
         {
@@ -34,8 +24,6 @@ namespace App.Domain.AppService.Company
             return await _companyService.UpdateCompany(id, updateDto);
           
         }
-
-
 
         public async Task<List<CompanyViewDTOs>> GetCompanyView(int id)
         {
