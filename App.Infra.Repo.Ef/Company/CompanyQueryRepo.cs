@@ -15,10 +15,29 @@ namespace App.Infra.Repo.Ef.Company
             _appDb = appDb;
         }
 
-        public Task<bool> CompanyDelete(int id)
+        public async Task<bool> CompanyDelete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var entity = _appDb.Companies.FirstOrDefault(x => x.CompanyId == id);
+                if (entity != null)
+                {
+                    _appDb.Companies.Remove(entity);
+                    await _appDb.SaveChangesAsync();
+                    return true;
+                }
+                return false;
+                //throw new NullReferenceException();
+            }
+            catch (Exception ex)
+            {
+                // Replace this with your logging mechanism
+                Console.WriteLine("Error deleting company: ", ex.Message,ex.Data);
+                return false;
+            }
         }
+
+
 
         public async Task<List<CompanyViewDTOs>> GetAllCompany()
         {

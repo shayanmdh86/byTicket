@@ -44,6 +44,14 @@ namespace App.EndPoint.WebApi.Controllers
         [HttpDelete]
         public async Task<bool> CompanyDelete(int id)
         {
+            int Numb;
+            bool Isnumber= int.TryParse(id.ToString(), out Numb);
+            if (Isnumber)
+            {
+                _companyAppService.DeleteCompany(id);
+            }
+
+           
             return await _companyAppService.DeleteCompany(id);
         }
 
