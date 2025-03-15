@@ -34,7 +34,7 @@ namespace App.Domain.Service.Company
             return await _companyQueryRepo.GetAllCompany();
         }
 
-        public async Task<bool> DeleteCompany(int id)
+        public  async Task<bool> DeleteCompany(int id)
         {
             return await _companyQueryRepo.CompanyDelete(id);
 

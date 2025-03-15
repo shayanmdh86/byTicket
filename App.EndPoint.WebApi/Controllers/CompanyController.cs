@@ -49,10 +49,11 @@ namespace App.EndPoint.WebApi.Controllers
             if (Isnumber)
             {
                 _companyAppService.DeleteCompany(id);
+                return true;
             }
-
+            return false;
            
-            return await _companyAppService.DeleteCompany(id);
+           
         }
 
 

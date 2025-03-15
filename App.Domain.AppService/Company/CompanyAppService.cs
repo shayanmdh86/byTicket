@@ -12,9 +12,10 @@ namespace App.Domain.AppService.Company
             _companyService = companyService;
         }
 
-        public async Task<bool> DeleteCompany(int id)
+        public  async Task<bool> DeleteCompany(int id)
         {
-            return await _companyService.DeleteCompany(id);
+            return await  _companyService.DeleteCompany(id);
+            
 
         }
 

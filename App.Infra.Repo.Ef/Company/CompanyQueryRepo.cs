@@ -1,6 +1,5 @@
 ﻿using App.Domain.Core.Company.Data;
 using App.Domain.Core.Company.DTOs;
-using App.Domain.Core.Company.Entities;
 using App.Infra.SqlServer.Ef.Dbctx;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,24 +16,17 @@ namespace App.Infra.Repo.Ef.Company
 
         public async Task<bool> CompanyDelete(int id)
         {
-            try
+
+
+            var Entity = _appDb.Companies.FirstOrDefault(x => x.CompanyId == id);
+            if (Entity != null)
             {
-                var entity = _appDb.Companies.FirstOrDefault(x => x.CompanyId == id);
-                if (entity != null)
-                {
-                    _appDb.Companies.Remove(entity);
-                    await _appDb.SaveChangesAsync();
-                    return true;
-                }
-                return false;
-                //throw new NullReferenceException();
+                _appDb.Companies.Remove(Entity);
+                _appDb.SaveChanges();
+                return true;
             }
-            catch (Exception ex)
-            {
-                // Replace this with your logging mechanism
-                Console.WriteLine("Error deleting company: ", ex.Message,ex.Data);
-                return false;
-            }
+            return false;
+
         }
 
 
@@ -69,11 +61,11 @@ namespace App.Infra.Repo.Ef.Company
                 entity.CompanyId = Id;
                 entity.CompanyName = UpdateCompany.CompanyName;
                 entity.PhoneNumber = UpdateCompany.PhoneNumber;
-                entity.TravelId=entity.TravelId;
-                entity.Travels=entity.Travels;
-                
+                entity.TravelId = entity.TravelId;
+                entity.Travels = entity.Travels;
+
                 await _appDb.SaveChangesAsync();
-                
+
 
                 return true;
             }
