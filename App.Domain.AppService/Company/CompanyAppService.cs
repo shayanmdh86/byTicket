@@ -12,6 +12,25 @@ namespace App.Domain.AppService.Company
             _companyService = companyService;
         }
 
+        public  async Task<bool> DeleteCompany(int id)
+        {
+            return await  _companyService.DeleteCompany(id);
+            
+
+        }
+
+        public async Task<bool> UpdateCompany(int id, CompanyUpdateDto updateDto)
+        {
+
+            return await _companyService.UpdateCompany(id, updateDto);
+          
+        }
+
+        public async Task<List<CompanyViewDTOs>> GetCompanyView(int id)
+        {
+            return await _companyService.CompanyViews();
+        }
+
         public async Task<Core.Company.Entities.Company> CreateCompany(CompanyInputDto input)
         {
             Core.Company.Entities.Company Company = new Core.Company.Entities.Company
@@ -22,20 +41,9 @@ namespace App.Domain.AppService.Company
             };
             await _companyService.CreateCompany(Company);
             return Company;
-
         }
 
-        public async Task<bool> DeleteCompany(int id)
-        {
-            return await _companyService.DeleteCompany(id);
-        }
-
-        public async Task<List<CompanyViewDTOs>> GetCompanies()
-        {
-          return await  _companyService.CompanyViews();
-        }
-
-        public async Task<List<CompanyViewDTOs>> GetCompanyView(int id)
+        public async Task<List<CompanyViewDTOs>> GetAllCompany()
         {
             return await _companyService.CompanyViews();
         }

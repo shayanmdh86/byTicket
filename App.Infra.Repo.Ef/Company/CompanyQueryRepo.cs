@@ -1,7 +1,8 @@
 ﻿using App.Domain.Core.Company.Data;
-using App.Domain.Core.Company.Entities;
+using App.Domain.Core.Company.DTOs;
 using App.Infra.SqlServer.Ef.Dbctx;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace App.Infra.Repo.Ef.Company
 {
@@ -14,36 +15,17 @@ namespace App.Infra.Repo.Ef.Company
             _appDb = appDb;
         }
 
-        public async Task<Domain.Core.Company.Entities.Company> CompanyGetById(int id)
+        public async Task<bool> CompanyDelete(int id)
         {
             try
             {
-                var res = await _appDb.Companies.FirstOrDefaultAsync(x => x.CompanyId == id);
-                return res;
 
-            }
-            catch (Exception ex)
-            {
-
-
-                Console.WriteLine(ex.Message);
-                return null;
-
-            }
-        }
-
-        public async Task<bool> DeleteCompany(int id)
-        {
-            try
-            {
-                var Entity = await _appDb.Companies.FindAsync(id);
-
+                var Entity = _appDb.Companies.FirstOrDefault(x => x.CompanyId == id);
                 if (Entity != null)
                 {
                     _appDb.Companies.Remove(Entity);
-                    await _appDb.SaveChangesAsync();
+                    _appDb.SaveChanges();
                     return true;
-
                 }
                 return false;
 
@@ -51,10 +33,16 @@ namespace App.Infra.Repo.Ef.Company
             catch (Exception ex)
             {
 
-               Console.WriteLine(ex.Message,",عملیات موفق امیز نبود!!");
+                Console.WriteLine("عملیات حذف با خطا مواجه شد",ex.ToString());
                 return false;
+                
             }
+
+
+
         }
+
+
 
         public async Task<List<CompanyViewDTOs>> GetAllCompany()
         {
@@ -66,12 +54,39 @@ namespace App.Infra.Repo.Ef.Company
             }).ToListAsync();
         }
 
+        public async Task<Domain.Core.Company.Entities.Company> GetCompanyById(int id)
+        {
+            return await _appDb.Companies.FirstOrDefaultAsync(x => x.CompanyId == id);
+
+        }
+
         public async Task InsertCompany(Domain.Core.Company.Entities.Company company)
         {
             _appDb.Add(company);
             await _appDb.SaveChangesAsync();
         }
 
+        public async Task<bool> UpdateCom(int Id, CompanyUpdateDto UpdateCompany)
+        {
+            var entity = await GetCompanyById(Id);
+            if (entity != null)
+            {
+                entity.CompanyId = Id;
+                entity.CompanyName = UpdateCompany.CompanyName;
+                entity.PhoneNumber = UpdateCompany.PhoneNumber;
+                entity.TravelId = entity.TravelId;
+                entity.Travels = entity.Travels;
+
+                await _appDb.SaveChangesAsync();
+
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
     }
 }

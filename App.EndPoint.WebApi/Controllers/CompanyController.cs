@@ -1,5 +1,6 @@
 ﻿using App.Domain.Core.Company.AppService;
 using App.Domain.Core.Company.DTOs;
+
 using App.Domain.Service.Company;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace App.EndPoint.WebApi.Controllers
         private readonly ICompanyAppService _companyAppService;
 
         public CompanyController(ICompanyAppService companyAppService)
+
         {
             _companyAppService = companyAppService;
         }
@@ -20,6 +22,7 @@ namespace App.EndPoint.WebApi.Controllers
 
         [HttpPost]
         public async Task<IActionResult> PostCompany(CompanyInputDto companyInputDto)
+
         {
             if (!ModelState.IsValid)
             {
@@ -38,55 +41,70 @@ namespace App.EndPoint.WebApi.Controllers
             });
         }
 
-
         [HttpDelete]
-        public async Task<IActionResult> DeleteCompany(int id)
+        public async Task<bool> CompanyDelete(int id)
         {
-            if (id != 0 && ModelState.IsValid)
+            int Numb;
+            bool Isnumber= int.TryParse(id.ToString(), out Numb);
+            if (Isnumber)
             {
-                await _companyAppService.DeleteCompany(id);
-                return Ok();
+                _companyAppService.DeleteCompany(id);
+                return true;
             }
-            return BadRequest();
+            return false;
 
-
+            
+           
+           
         }
 
-        [HttpGet ]
+
+        [HttpPut]
+        public async Task<ActionResult<UpdateCompanyResponseDto>> UpdateCompany(int id, CompanyUpdateDto updateDto)
+        {
+            if (id <= 0 || updateDto == null)
+            {
+                return BadRequest("Invalid Parameters.");
+
+            }
+            try
+            {
+                var Respons = await _companyAppService.UpdateCompany(id, updateDto);
+
+                if (Respons == null)
+
+                    return BadRequest(Respons);
+
+
+                return Ok(Respons);
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, "خطا در بروزرسانی شرکت!!!");
+            }
+
+            //[HttpDelete]
+            // async Task<IActionResult> DeleteCompany(int id)
+            //{
+            //    if (id != 0 && ModelState.IsValid)
+            //    {
+            //        await _companyAppService.DeleteCompany(id);
+            //        return Ok();
+            //    }
+            //    return BadRequest();
+
+
+     
+        }
+        [HttpGet]
         public async Task<IActionResult> GetAllCompany()
         {
-            var entity= await _companyAppService.GetCompanies();
+            var entity = await _companyAppService.GetAllCompany();
             return Ok(entity);
 
         }
-
-
-        //public async Task<ActionResult<UpdateCompanyResponseDto>> UpdateCompany(int id, CompanyUpdateDto updateDto)
-        //{
-        //    if (id <= 0 || updateDto == null)
-        //    {
-        //        return BadRequest("Invalid Parameters.");
-
-        //    }
-        //    try
-        //    {
-        //        var Respons = await _companyQureyRepo.UpdateCom(id,updateDto);
-
-        //        if (Respons == null)
-
-        //            return BadRequest(Respons);
-
-
-        //        return Ok(Respons);
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        return StatusCode(500, "خطا در بروزرسانی شرکت!!!");
-        //    }
-
-        //}
     }
 }
 

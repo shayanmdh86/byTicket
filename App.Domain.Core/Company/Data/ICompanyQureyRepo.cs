@@ -1,4 +1,6 @@
-﻿using App.Domain.Core.Company.Entities;
+﻿using App.Domain.Core.Company.DTOs;
+using App.Domain.Core.Company.Entities;
+using System.Data;
 
 namespace App.Domain.Core.Company.Data
 {
@@ -6,7 +8,8 @@ namespace App.Domain.Core.Company.Data
     {
         Task InsertCompany(Company.Entities.Company company);
         Task<List<CompanyViewDTOs>> GetAllCompany();
-        Task<Company.Entities.Company> CompanyGetById(int id);
-        Task<bool> DeleteCompany(int id);
+        Task<bool> CompanyDelete(int id);
+        Task<bool> UpdateCom(int Id ,Company.DTOs.CompanyUpdateDto UpdateCompany);
+        Task<Company.Entities.Company> GetCompanyById(int id);
     }
 }

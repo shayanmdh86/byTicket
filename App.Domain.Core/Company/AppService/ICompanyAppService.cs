@@ -1,4 +1,5 @@
 ﻿using App.Domain.Core.Company.DTOs;
+using App.Domain.Core.Company.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,10 @@ namespace App.Domain.Core.Company.AppService
     {
         Task<Core.Company.Entities.Company> CreateCompany(CompanyInputDto input);
         Task<bool> DeleteCompany(int id);
-        Task<List<CompanyViewDTOs>> GetCompanyView(int id);
-        Task<List<CompanyViewDTOs>> GetCompanies();
+        Task<bool> UpdateCompany(int id,CompanyUpdateDto input);
+        Task<List<CompanyViewDTOs>> GetAllCompany();
+
+
 
     }
 }
