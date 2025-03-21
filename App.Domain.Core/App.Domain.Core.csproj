@@ -13,4 +13,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Bus\AppService\" />
+    <Folder Include="Bus\Service\" />
+  </ItemGroup>
+
 </Project>

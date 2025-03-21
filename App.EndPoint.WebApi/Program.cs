@@ -1,5 +1,6 @@
 using App.Domain.AppService.Company;
 using App.Domain.AppService.Passenger;
+using App.Domain.Core.Bus.Data;
 using App.Domain.Core.Company.AppService;
 using App.Domain.Core.Company.Data;
 using App.Domain.Core.Company.Service;
@@ -8,6 +9,7 @@ using App.Domain.Core.Passenger.Data;
 using App.Domain.Core.Passenger.Service;
 using App.Domain.Service.Company;
 using App.Domain.Service.Passenger;
+using App.Infra.Repo.Ef.BusQueryRepo;
 using App.Infra.Repo.Ef.Company;
 using App.Infra.Repo.Ef.Passenger;
 using App.Infra.SqlServer.Ef.Dbctx;
@@ -29,6 +31,8 @@ builder.Services.AddScoped<IPassengerAppService, PassengerAppService>();
 builder.Services.AddScoped<ICompanyQureyRepo, CompanyQueryRepo>();
 builder.Services.AddScoped<ICompanyService, CompanyService>();
 builder.Services.AddScoped<ICompanyAppService, CompanyAppService>();
+
+builder.Services.AddScoped<IBusQueryRepo,BusQueryRepo>();
 
 
 
