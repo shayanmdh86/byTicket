@@ -2,6 +2,7 @@
 using App.Domain.Core.Company.DTOs;
 using App.Infra.SqlServer.Ef.Dbctx;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace App.Infra.Repo.Ef.Company
 {
@@ -16,16 +17,28 @@ namespace App.Infra.Repo.Ef.Company
 
         public async Task<bool> CompanyDelete(int id)
         {
-
-
-            var Entity = _appDb.Companies.FirstOrDefault(x => x.CompanyId == id);
-            if (Entity != null)
+            try
             {
-                _appDb.Companies.Remove(Entity);
-                _appDb.SaveChanges();
-                return true;
+
+                var Entity = _appDb.Companies.FirstOrDefault(x => x.CompanyId == id);
+                if (Entity != null)
+                {
+                    _appDb.Companies.Remove(Entity);
+                    _appDb.SaveChanges();
+                    return true;
+                }
+                return false;
+
             }
-            return false;
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("عملیات حذف با خطا مواجه شد",ex.ToString());
+                return false;
+                
+            }
+
+
 
         }
 
