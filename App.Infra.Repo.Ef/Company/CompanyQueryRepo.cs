@@ -42,8 +42,6 @@ namespace App.Infra.Repo.Ef.Company
 
         }
 
-
-
         public async Task<List<CompanyViewDTOs>> GetAllCompany()
         {
             return await _appDb.Companies.AsNoTracking().Select(x => new CompanyViewDTOs
@@ -87,6 +85,8 @@ namespace App.Infra.Repo.Ef.Company
                 return false;
             }
         }
+
+
 
     }
 }
