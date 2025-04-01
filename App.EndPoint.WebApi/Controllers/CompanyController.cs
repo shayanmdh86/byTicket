@@ -59,7 +59,7 @@ namespace App.EndPoint.WebApi.Controllers
         }
 
 
-        [HttpPut]
+        [HttpPut("UpdateBus/{id}")]
         public async Task<ActionResult<UpdateCompanyResponseDto>> UpdateCompany(int id, CompanyUpdateDto updateDto)
         {
             if (id <= 0 || updateDto == null)
@@ -98,7 +98,7 @@ namespace App.EndPoint.WebApi.Controllers
 
      
         }
-        [HttpGet]
+        [HttpGet("Buses")]
         public async Task<IActionResult> GetAllCompany()
         {
             var entity = await _companyAppService.GetAllCompany();
