@@ -16,6 +16,8 @@
   <ItemGroup>
     <Folder Include="Bus\AppService\" />
     <Folder Include="Bus\Service\" />
+    <Folder Include="Travel\AppService\" />
+    <Folder Include="Travel\Service\" />
   </ItemGroup>
 
 </Project>
